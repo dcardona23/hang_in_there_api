@@ -24,7 +24,6 @@ it "sends a list of all posters" do
   )
   get '/api/v1/posters'
   posters = JSON.parse(response.body, symbolize_names: true)
-  #binding.pry
   expect(response).to be_successful
   expect(posters.count).to eq(3)
   posters.each do |poster|
@@ -45,6 +44,53 @@ it "sends a list of all posters" do
   end
 end
 
+it "can add new posters" do
+    poster_params = {   
+                "name": "DEFEAT",
+                "description": "It's too late to start now.",
+                "price": 35.00,
+                "year": 2023,
+                "vintage": false,
+                "img_url":  "https://unsplash.com/photos/brown-brick-building-with-red-car-parked-on-the-side-mMV6Y0ExyIk"
+    }
+    headers = {"CONTENT_TYPE" => "application/json"}
+    post "/api/v1/posters", headers: headers, params: JSON.generate(poster: poster_params)
+    created_poster = Poster.last
+
+    expect(response).to be_successful
+    expect(created_poster.name).to eq(poster_params[:name])
+    expect(created_poster.description).to eq(poster_params[:description])
+    expect(created_poster.price).to eq(poster_params[:price])
+    expect(created_poster.year).to eq(poster_params[:year])
+    expect(created_poster.vintage).to eq(poster_params[:vintage])
+    expect(created_poster.img_url).to eq(poster_params[:img_url])
+
+end
+
+it "can ignore info that's not accepted" do
+    poster_params ={ 
+        "id":43,
+        "name": "FAILURE",
+        "description": "It's too late to start now.",
+        "price": 35.00,
+        "year": 2023,
+        "vintage": false,
+        "img_url":  "https://unsplash.com/photos/brown-brick-building-with-red-car-parked-on-the-side-mMV6Y0ExyIk"
+}
+
+headers = {"CONTENT_TYPE" => "application/json"}
+post "/api/v1/posters", headers: headers, params: JSON.generate(poster: poster_params)
+created_poster = Poster.last
+
+expect(response).to be_successful
+expect(created_poster.name).to eq(poster_params[:name])
+expect(created_poster.description).to eq(poster_params[:description])
+expect(created_poster.price).to eq(poster_params[:price])
+expect(created_poster.year).to eq(poster_params[:year])
+expect(created_poster.vintage).to eq(poster_params[:vintage])
+expect(created_poster.img_url).to eq(poster_params[:img_url])
+
+end
 
 
 
