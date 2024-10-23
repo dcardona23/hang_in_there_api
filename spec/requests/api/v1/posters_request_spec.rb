@@ -93,52 +93,6 @@ expect(created_poster.img_url).to eq(poster_params[:img_url])
 
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-describe "Posters API" do
     it "can get one poster by its id" do
         id = Poster.create(
             name: "MEDIOCRITY", 
@@ -229,7 +183,24 @@ describe "Posters API" do
         expect(attributes).to have_key(:img_url)
         expect(attributes[:img_url]).to eq("https://images.unsplash.com/photo-1551993005-75c4131b6bd8")
     end
-end
+
+    it 'can destroy a poster by id' do
+        poster = Poster.create(
+            name: "MEDIOCRITY", 
+            description: "Dreams are just that—dreams.", 
+            price: 127.00, 
+            year: 2021, 
+            vintage: false, 
+            img_url: "https://images.unsplash.com/photo-1551993005-75c4131b6bd8")
+
+        id = poster.id
+
+        delete "/api/v1/posters/#{id}"
+
+        expect(response).to be_successful
+        expect(response).to have_http_status(204)
+    end
+
 end
 
 

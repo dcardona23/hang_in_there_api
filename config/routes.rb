@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post "/api/v1/posters", to: "api/v1/posters#create"
   get "/api/v1/posters/:id", to: "api/v1/posters#show"
   patch "/api/v1/posters/:id", to: "api/v1/posters#update"
+  delete "/api/v1/posters/:id", to: "api/v1/posters#delete"
   # Defines the root path route ("/")
   # root "posts#index"
 
