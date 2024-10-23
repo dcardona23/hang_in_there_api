@@ -1,10 +1,4 @@
 class PosterSerializer
-<<<<<<< HEAD
-    include JSONAPI::Serializer
-    set_id :id
-    attributes :name, :description, :price, :year, :vintage, :img_url
-    
-=======
     def self.format_posters(posters)
         posters.map do |poster|
         {
@@ -27,7 +21,6 @@ class PosterSerializer
     end
     end
 
->>>>>>> 9d0be1b2c003f16d0684e0c6d644759e4e4f0f72
     def self.format_poster(poster)
         {
             data: {
