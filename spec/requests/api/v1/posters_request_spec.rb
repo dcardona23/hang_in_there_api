@@ -24,6 +24,7 @@ it "sends a list of all posters" do
   )
   get '/api/v1/posters'
   posters = JSON.parse(response.body, symbolize_names: true)
+  #binding.pry
   expect(response).to be_successful
   expect(posters.count).to eq(3)
   posters.each do |poster|
@@ -81,7 +82,7 @@ it "can ignore info that's not accepted" do
 headers = {"CONTENT_TYPE" => "application/json"}
 post "/api/v1/posters", headers: headers, params: JSON.generate(poster: poster_params)
 created_poster = Poster.last
-
+#binding.pry
 expect(response).to be_successful
 expect(created_poster.name).to eq(poster_params[:name])
 expect(created_poster.description).to eq(poster_params[:description])
@@ -198,6 +199,35 @@ end
 
         expect(response).to be_successful
         expect(response).to have_http_status(204)
+    end
+
+    it "sends a list of all posters in ascending order" do
+        Poster.create(name: "REGRET",
+        description: "Hard work rarely pays off.",
+        price: 89.00,
+        year: 2018,
+        vintage: true,
+        img_url:  "https://plus.unsplash.com/premium_photo-1661293818249-fddbddf07a5d")
+        Poster.create(name: "DEFEAT",
+        description: "It's REALLY too late to start now.",
+        price: 40.00,
+        year: 2024,
+        vintage: false,
+        img_url:  "https://unsplash.com/photos/brown-brick-building-with-red-car-parked-on-the-side-mMV6Y0ExyIk"
+      )
+        Poster.create(name: "PROCRASTINATION",
+        description: "You can't change anything.",
+        price: 94.00,
+        year: 2012,
+        vintage: false,
+        img_url:  "https://unsplash.com/photos/brown-brick-building-with-red-car-parked-on-the-side-mMV6Y0ExyIk"
+      )
+      get '/api/v1/posters?posters?sort=desc'
+      posters = JSON.parse(response.body, symbolize_names: true)
+      #binding.pry
+      expect(response).to be_successful
+      expect(posters.count).to eq(3)
+      #Add tests that show created at is higher/lower
     end
 
 end

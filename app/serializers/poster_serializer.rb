@@ -37,4 +37,5 @@ class PosterSerializer
             }
         }
     end
+
 end
