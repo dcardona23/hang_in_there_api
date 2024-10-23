@@ -1,7 +1,96 @@
 require 'rails_helper'
 
+RSpec.describe "Poster API" do
+it "sends a list of all posters" do
+    Poster.create(name: "REGRET",
+    description: "Hard work rarely pays off.",
+    price: 89.00,
+    year: 2018,
+    vintage: true,
+    img_url:  "https://plus.unsplash.com/premium_photo-1661293818249-fddbddf07a5d")
+    Poster.create(name: "DEFEAT",
+    description: "It's REALLY too late to start now.",
+    price: 40.00,
+    year: 2024,
+    vintage: false,
+    img_url:  "https://unsplash.com/photos/brown-brick-building-with-red-car-parked-on-the-side-mMV6Y0ExyIk"
+  )
+    Poster.create(name: "PROCRASTINATION",
+    description: "You can't change anything.",
+    price: 94.00,
+    year: 2012,
+    vintage: false,
+    img_url:  "https://unsplash.com/photos/brown-brick-building-with-red-car-parked-on-the-side-mMV6Y0ExyIk"
+  )
+  get '/api/v1/posters'
+  posters = JSON.parse(response.body, symbolize_names: true)
+  expect(response).to be_successful
+  expect(posters.count).to eq(3)
+  posters.each do |poster|
+    expect(poster).to have_key(:id)
+    expect(poster[:id]).to be_an(Integer)
+    expect(poster).to have_key(:name)
+    expect(poster[:name]).to be_an(String)
+    expect(poster).to have_key(:description)
+    expect(poster[:description]).to be_an(String)
+    expect(poster).to have_key(:price)
+    expect(poster[:price]).to be_an(Float)
+    expect(poster).to have_key(:year)
+    expect(poster[:year]).to be_an(Integer)
+    expect(poster).to have_key(:vintage)
+    expect(poster[:vintage]).to be_in([true, false])
+    expect(poster).to have_key(:img_url)
+    expect(poster[:img_url]).to be_an(String)
+  end
+end
 
+it "can add new posters" do
+    poster_params = {   
+                "name": "DEFEAT",
+                "description": "It's too late to start now.",
+                "price": 35.00,
+                "year": 2023,
+                "vintage": false,
+                "img_url":  "https://unsplash.com/photos/brown-brick-building-with-red-car-parked-on-the-side-mMV6Y0ExyIk"
+    }
+    headers = {"CONTENT_TYPE" => "application/json"}
+    post "/api/v1/posters", headers: headers, params: JSON.generate(poster: poster_params)
+    created_poster = Poster.last
 
+    expect(response).to be_successful
+    expect(created_poster.name).to eq(poster_params[:name])
+    expect(created_poster.description).to eq(poster_params[:description])
+    expect(created_poster.price).to eq(poster_params[:price])
+    expect(created_poster.year).to eq(poster_params[:year])
+    expect(created_poster.vintage).to eq(poster_params[:vintage])
+    expect(created_poster.img_url).to eq(poster_params[:img_url])
+
+end
+
+it "can ignore info that's not accepted" do
+    poster_params ={ 
+        "id":43,
+        "name": "FAILURE",
+        "description": "It's too late to start now.",
+        "price": 35.00,
+        "year": 2023,
+        "vintage": false,
+        "img_url":  "https://unsplash.com/photos/brown-brick-building-with-red-car-parked-on-the-side-mMV6Y0ExyIk"
+}
+
+headers = {"CONTENT_TYPE" => "application/json"}
+post "/api/v1/posters", headers: headers, params: JSON.generate(poster: poster_params)
+created_poster = Poster.last
+
+expect(response).to be_successful
+expect(created_poster.name).to eq(poster_params[:name])
+expect(created_poster.description).to eq(poster_params[:description])
+expect(created_poster.price).to eq(poster_params[:price])
+expect(created_poster.year).to eq(poster_params[:year])
+expect(created_poster.vintage).to eq(poster_params[:vintage])
+expect(created_poster.img_url).to eq(poster_params[:img_url])
+
+end
 
 
 
@@ -139,6 +228,7 @@ describe "Posters API" do
         expect(attributes).to have_key(:img_url)
         expect(attributes[:img_url]).to eq("https://images.unsplash.com/photo-1551993005-75c4131b6bd8")
     end
+end
 end
 
 

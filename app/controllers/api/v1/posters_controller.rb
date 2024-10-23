@@ -1,7 +1,12 @@
 class Api::V1::PostersController < ApplicationController
-    
+    def index
+        render json: Poster.all
+    end
 
-
+    def create
+        poster = Poster.create(poster_params)
+        render json: PosterSerializer.format_poster(poster)
+    end
 
 
 
@@ -23,7 +28,7 @@ class Api::V1::PostersController < ApplicationController
     private
 
     def poster_params
-        params.require(:poster).permit(:id, :name, :description, :price, :year, :vintage, :img_url)
+        params.require(:poster).permit(:name, :description, :price, :year, :vintage, :img_url)
     end
 
 end
