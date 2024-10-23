@@ -1,6 +1,5 @@
 class Api::V1::PostersController < ApplicationController
     def index
-        #binding.pry
         if params[:sort] == "asc"
             posters = Poster.all.order(:created_at)
         elsif params[:sort] == "desc"
@@ -8,25 +7,28 @@ class Api::V1::PostersController < ApplicationController
         else
             posters = Poster.all
         end
-        
-        #params[:sort] will be "asc" or "des"
 
-        render json: PosterSerializer.format_posters(posters)
+        render json: PosterSerializer.new(posters, meta: {
+            count: posters.count
+        })
     end
 
     def create
         poster = Poster.create(poster_params)
-        render json: PosterSerializer.format_poster(poster)
+        #render json: PosterSerializer.format_poster(poster)
+        render json: PosterSerializer.new(poster)
     end
 
     def show
         poster = Poster.find(params[:id])
         render json: PosterSerializer.format_poster(poster)
+        #render json: PosterSerializer.new(poster)
     end
 
     def update 
         poster = Poster.update(params[:id], poster_params)
         render json: PosterSerializer.format_poster(poster)
+        #render json: PosterSerializer.new(poster)
     end
 
     def delete
