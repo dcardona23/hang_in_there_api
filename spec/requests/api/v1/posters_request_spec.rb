@@ -24,6 +24,7 @@ it "sends a list of all posters" do
   )
   get '/api/v1/posters'
   posters = JSON.parse(response.body, symbolize_names: true)
+  
   expect(response).to be_successful
   expect(posters.count).to eq(3)
   posters.each do |poster|
@@ -81,7 +82,7 @@ it "can ignore info that's not accepted" do
 headers = {"CONTENT_TYPE" => "application/json"}
 post "/api/v1/posters", headers: headers, params: JSON.generate(poster: poster_params)
 created_poster = Poster.last
-
+#binding.pry
 expect(response).to be_successful
 expect(created_poster.name).to eq(poster_params[:name])
 expect(created_poster.description).to eq(poster_params[:description])

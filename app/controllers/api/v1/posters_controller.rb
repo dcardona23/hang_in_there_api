@@ -1,6 +1,8 @@
 class Api::V1::PostersController < ApplicationController
     def index
-        render json: Poster.all
+        posters = Poster.all
+        render json: PosterSerializer.new(posters)
+
     end
 
     def create

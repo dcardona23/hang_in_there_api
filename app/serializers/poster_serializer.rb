@@ -1,4 +1,8 @@
 class PosterSerializer
+    include JSONAPI::Serializer
+    set_id :id
+    attributes :name, :description, :price, :year, :vintage, :img_url
+    
     def self.format_poster(poster)
         {
             data: {
@@ -15,4 +19,5 @@ class PosterSerializer
             }
         }
     end
+
 end
