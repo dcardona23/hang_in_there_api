@@ -11,7 +11,9 @@ class Api::V1::PostersController < ApplicationController
         
         #params[:sort] will be "asc" or "des"
 
-        render json: PosterSerializer.format_posters(posters)
+        render json: PosterSerializer.new(posters, meta: {
+            count: posters.count
+        })
     end
 
     def create

@@ -24,24 +24,33 @@ it "sends a list of all posters" do
   )
   get '/api/v1/posters'
   posters = JSON.parse(response.body, symbolize_names: true)
-  #binding.pry
+ 
   expect(response).to be_successful
-  expect(posters.count).to eq(3)
-  posters.each do |poster|
+  expect(posters[:data].count).to eq(3)
+  posters[:data].each do |poster|
+
     expect(poster).to have_key(:id)
-    expect(poster[:id]).to be_an(Integer)
-    expect(poster).to have_key(:name)
-    expect(poster[:name]).to be_an(String)
-    expect(poster).to have_key(:description)
-    expect(poster[:description]).to be_an(String)
-    expect(poster).to have_key(:price)
-    expect(poster[:price]).to be_an(Float)
-    expect(poster).to have_key(:year)
-    expect(poster[:year]).to be_an(Integer)
-    expect(poster).to have_key(:vintage)
-    expect(poster[:vintage]).to be_in([true, false])
-    expect(poster).to have_key(:img_url)
-    expect(poster[:img_url]).to be_an(String)
+    expect(poster[:id].to_i).to be_an(Integer)
+
+    attributes = poster[:attributes]
+ 
+    expect(attributes).to have_key(:name)
+    expect(attributes[:name]).to be_an(String)
+
+    expect(attributes).to have_key(:description)
+    expect(attributes[:description]).to be_an(String)
+
+    expect(attributes).to have_key(:price)
+    expect(attributes[:price]).to be_an(Float)
+
+    expect(attributes).to have_key(:year)
+    expect(attributes[:year]).to be_an(Integer)
+
+    expect(attributes).to have_key(:vintage)
+    expect(attributes[:vintage]).to be_in([true, false])
+    
+    expect(attributes).to have_key(:img_url)
+    expect(attributes[:img_url]).to be_an(String)
   end
 end
 
@@ -226,7 +235,7 @@ end
       posters = JSON.parse(response.body, symbolize_names: true)
       #binding.pry
       expect(response).to be_successful
-      expect(posters.count).to eq(3)
+      expect(posters[:data].count).to eq(3)
       #Add tests that show created at is higher/lower
     end
 
