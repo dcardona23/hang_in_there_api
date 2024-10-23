@@ -48,7 +48,7 @@ it "sends a list of all posters" do
 
     expect(attributes).to have_key(:vintage)
     expect(attributes[:vintage]).to be_in([true, false])
-    
+
     expect(attributes).to have_key(:img_url)
     expect(attributes[:img_url]).to be_an(String)
   end
@@ -66,7 +66,7 @@ it "can add new posters" do
     headers = {"CONTENT_TYPE" => "application/json"}
     post "/api/v1/posters", headers: headers, params: JSON.generate(poster: poster_params)
     created_poster = Poster.last
-
+    #binding.pry
     expect(response).to be_successful
     expect(created_poster.name).to eq(poster_params[:name])
     expect(created_poster.description).to eq(poster_params[:description])
