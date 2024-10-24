@@ -8,8 +8,20 @@ class Api::V1::PostersController < ApplicationController
             posters = Poster.all
         end
 
+        if params[:name]
+            posters = Poster.search_by_name(params[:name])
+        end
+
+        if params[:max_price]
+            posters = Poster.search_by_max_price(params[:max_price])
+        end
+
+        if params[:min_price]
+            posters = Poster.search_by_min_price(params[:min_price])
+        end
+
         render json: PosterSerializer.new(posters, meta: {
-            count: posters.count
+        count: posters.count
         })
     end
 
@@ -35,6 +47,12 @@ class Api::V1::PostersController < ApplicationController
         poster = Poster.find(params[:id])
         poster.destroy
         head :no_content
+    end
+
+    def search_by_name
+        name = params[:name]
+        posters = Poster.search_by_name(name)
+        render json: PosterSerializer.format_posters(posters)
     end
 
     private

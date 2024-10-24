@@ -239,6 +239,29 @@ end
       #Add tests that show created at is higher/lower
     end
 
+    it 'filters results by query parameters' do
+        Poster.create(name: "DISASTER",
+        description: "Hard work rarely pays off.",
+        price: 89.00,
+        year: 2018,
+        vintage: true,
+        img_url:  "https://plus.unsplash.com/premium_photo-1661293818249-fddbddf07a5d")
+
+        Poster.create(name: "TERRIBLE",
+        description: "It's REALLY too late to start now.",
+        price: 40.00,
+        year: 2024,
+        vintage: false,
+        img_url:  "https://unsplash.com/photos/brown-brick-building-with-red-car-parked-on-the-side-mMV6Y0ExyIk"
+        )
+
+        get '/api/v1/posters?posters?name=ter'
+        posters = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response).to be_successful
+        expect(posters[:data].count).to eq(2)
+
+    end
 end
 
 
