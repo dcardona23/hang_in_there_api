@@ -318,7 +318,6 @@ end
 
         expect(response).to be_successful
         expect(posters[:data].count).to eq(2)
-
     end
 end
 

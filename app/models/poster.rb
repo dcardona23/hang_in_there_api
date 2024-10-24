@@ -18,5 +18,10 @@ class Poster < ApplicationRecord
     def self.sort_desc
        order("created_at desc")
     end
+
+    def self.poster_count
+        posters = Poster.all
+        posters.count
+    end
     
 end
