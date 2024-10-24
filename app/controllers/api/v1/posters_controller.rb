@@ -24,7 +24,7 @@ class Api::V1::PostersController < ApplicationController
         end
 
         render json: PosterSerializer.new(posters, meta: {
-        count: posters.count
+        Poster.poster_count
         })
     end
 
