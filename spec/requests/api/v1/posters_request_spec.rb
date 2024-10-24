@@ -120,7 +120,7 @@ end
             expect(poster).to have_key(:data)
     
             expect(poster[:data]).to have_key(:id)
-            expect(poster[:data][:id]).to be_a(Integer)
+            expect(poster[:data][:id]).to be_a(String)
 
             expect(poster[:data]).to have_key(:type)
             expect(poster[:data][:type]).to eq("poster")
