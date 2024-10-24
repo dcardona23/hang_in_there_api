@@ -36,7 +36,6 @@ RSpec.describe Poster do
     describe 'class methods' do
         it 'searches for posters by name' do
             poster_by_name = @posters.search_by_name("ter")
-#search_by_name returns an array of poster objects - will need to map over those to see if the names = disaster and terrible
             expect(poster_by_name.map(&:name)).to eq(["DISASTER", "TERRIBLE"])
         end
 
