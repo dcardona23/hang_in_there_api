@@ -252,10 +252,35 @@ end
         price: 40.00,
         year: 2024,
         vintage: false,
-        img_url:  "https://unsplash.com/photos/brown-brick-building-with-red-car-parked-on-the-side-mMV6Y0ExyIk"
-        )
+        img_url:  "https://unsplash.com/photos/brown-brick-building-with-red-car-parked-on-the-side-mMV6Y0ExyIk")
 
-        get '/api/v1/posters?posters?name=ter'
+        Poster.create(name: "MEDIOCRITY",
+        description: "Dreams are just that—dreams.",
+        price: 127.00,
+        year: 2021,
+        vintage: false,
+        img_url: "https://unsplash.com/photos/brown-brick-building-with-red-car-parked-on-the-side-mMV6Y0ExyIk")
+
+        Poster.create(name: "HOPELESSNESS",
+        description: "Stay in your comfort zone; it's safer.",
+        price: 112.00,
+        year: 2020,
+        vintage: true,
+        img_url: "https://unsplash.com/photos/brown-brick-building-with-red-car-parked-on-the-side-mMV6Y0ExyIk")
+
+        get '/api/v1/posters?name=ter'
+        posters = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response).to be_successful
+        expect(posters[:data].count).to eq(2)
+
+        get '/api/v1/posters?max_price=99.99'
+        posters = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response).to be_successful
+        expect(posters[:data].count).to eq(2)
+
+        get '/api/v1/posters?min_price=99.99'
         posters = JSON.parse(response.body, symbolize_names: true)
 
         expect(response).to be_successful

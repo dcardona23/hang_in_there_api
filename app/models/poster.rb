@@ -3,11 +3,11 @@ class Poster < ApplicationRecord
         where("name ILIKE ?", "%#{input}%")
     end
 
-    def self.search_by_max_price(max_price)
-        where("price <= ?", max_price)
+    def self.search_by_max_price(input)
+        where("price <= ?", input)
     end
 
-    def self.search_by_min_price(min_price)
-        where("price >= ?", min_price)
+    def self.search_by_min_price(input)
+        where("price >= ?", input)
     end
 end
