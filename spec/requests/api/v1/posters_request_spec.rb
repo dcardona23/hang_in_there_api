@@ -231,12 +231,45 @@ end
         vintage: false,
         img_url:  "https://unsplash.com/photos/brown-brick-building-with-red-car-parked-on-the-side-mMV6Y0ExyIk"
       )
-      get '/api/v1/posters?posters?sort=desc'
+      get '/api/v1/posters?sort=asc'
       posters = JSON.parse(response.body, symbolize_names: true)
       #binding.pry
       expect(response).to be_successful
       expect(posters[:data].count).to eq(3)
-      #Add tests that show created at is higher/lower
+      expect(posters[:data][0][:attributes][:name]).to eq("REGRET")
+      expect(posters[:data][1][:attributes][:name]).to eq("DEFEAT")
+      expect(posters[:data][2][:attributes][:name]).to eq("PROCRASTINATION")
+    end
+
+    it "sends a list of all posters in descending order" do
+        Poster.create(name: "REGRET",
+        description: "Hard work rarely pays off.",
+        price: 89.00,
+        year: 2018,
+        vintage: true,
+        img_url:  "https://plus.unsplash.com/premium_photo-1661293818249-fddbddf07a5d")
+        Poster.create(name: "DEFEAT",
+        description: "It's REALLY too late to start now.",
+        price: 40.00,
+        year: 2024,
+        vintage: false,
+        img_url:  "https://unsplash.com/photos/brown-brick-building-with-red-car-parked-on-the-side-mMV6Y0ExyIk"
+      )
+        Poster.create(name: "PROCRASTINATION",
+        description: "You can't change anything.",
+        price: 94.00,
+        year: 2012,
+        vintage: false,
+        img_url:  "https://unsplash.com/photos/brown-brick-building-with-red-car-parked-on-the-side-mMV6Y0ExyIk"
+      )
+      get '/api/v1/posters?sort=desc'
+      posters = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to be_successful
+      expect(posters[:data].count).to eq(3)
+      expect(posters[:data][0][:attributes][:name]).to eq("PROCRASTINATION")
+      expect(posters[:data][1][:attributes][:name]).to eq("DEFEAT")
+      expect(posters[:data][2][:attributes][:name]).to eq("REGRET")
     end
 
     it 'filters results by query parameters' do
