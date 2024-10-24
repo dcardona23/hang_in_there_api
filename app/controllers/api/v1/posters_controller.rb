@@ -13,7 +13,7 @@ class Api::V1::PostersController < ApplicationController
     end
 
     def create
-        poster = Poster.create(poster_params)
+        poster = Poster.create!(poster_params)
         render json: PosterSerializer.new(poster)
     end
 
@@ -23,7 +23,7 @@ class Api::V1::PostersController < ApplicationController
     end
 
     def update 
-        poster = Poster.update(params[:id], poster_params)
+        poster = Poster.update!(params[:id], poster_params)
         render json: PosterSerializer.new(poster)
     end
 
