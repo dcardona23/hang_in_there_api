@@ -1,6 +1,6 @@
 class Poster < ApplicationRecord
     def self.search_by_name(input)
-        where("name ILIKE ?", "%#{input}%")
+        where("name ILIKE ?", "%#{input}%").order("name")
     end
 
     def self.search_by_max_price(input)

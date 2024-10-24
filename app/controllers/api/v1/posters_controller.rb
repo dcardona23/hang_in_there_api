@@ -9,7 +9,7 @@ class Api::V1::PostersController < ApplicationController
         posters = posters.search_by_max_price(params[:max_price].to_f) if params[:max_price]
         posters = posters.search_by_min_price(params[:min_price].to_f) if params[:min_price]
 
-        render json: PosterSerializer.new(posters, meta: {"count": Poster.poster_count})
+        render json: PosterSerializer.new(posters, meta: {"count": posters.poster_count})
     end
 
     def create
