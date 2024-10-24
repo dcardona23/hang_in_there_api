@@ -3,9 +3,10 @@ class Api::V1::PostersController < ApplicationController
         posters = Poster.all
 
         if params[:sort] == "asc"
-            posters = posters.order(:created_at)
+            posters = posters.sort_asc
         elsif params[:sort] == "desc"
-            posters = posters.order("created_at desc")
+            posters = posters.sort_desc
+            #binding.pry
         end
 
         if params[:name]
