@@ -88,12 +88,6 @@ class Api::V1::PostersController < ApplicationController
         head :no_content
     end
 
-    def search_by_name
-        name = params[:name]
-        posters = Poster.search_by_name(name)
-        render json: PosterSerializer.format_posters(posters)
-    end
-
     private
 
     def poster_params
