@@ -34,13 +34,14 @@ RSpec.describe Poster do
     end
 
     describe 'class methods' do
-        it 'searches for posters by name' do
-            poster_by_name = @posters.search_by_name("ter")
-            expect(poster_by_name.map(&:name)).to eq(["DISASTER", "TERRIBLE"])
-        end
-
         it 'counts posters' do
             expect(Poster.poster_count).to eq(4)
+        end
+
+        it 'searches for posters by name' do
+            poster_by_name = Poster.search_by_name("ter")
+
+            expect(poster_by_name.map(&:name)).to eq(["DISASTER", "TERRIBLE"])
         end
 
         it 'searches for posters by max and min price' do

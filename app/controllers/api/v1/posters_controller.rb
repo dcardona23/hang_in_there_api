@@ -13,6 +13,24 @@ class Api::V1::PostersController < ApplicationController
     end
 
     def create
+        missing_fields = []
+        missing_fields.push "name" if poster_params[:name].blank?
+        missing_fields.push "description" if poster_params[:description].blank?
+        missing_fields.push "year" if poster_params[:year].blank?
+        missing_fields.push "price" if poster_params[:price].blank?
+
+        if missing_fields.any?
+            render json: {
+                "errors": [
+                    {
+                        status: "422",
+                        message: "#{missing_fields.join(', ')} can't be blank"
+                    }
+                ]
+            }, status: :unprocessable_entity
+            return
+        end
+
         if Poster.exists?(name: poster_params[:name])
             render json: {
                 "errors": [
@@ -21,11 +39,12 @@ class Api::V1::PostersController < ApplicationController
                         message: "Duplicate name entered."
                     }
                 ]
-            }, status: :unprocessable_entity
-        else
+                }, status: :unprocessable_entity
+                return
+            end
+        
             poster = Poster.create!(poster_params)
             render json: PosterSerializer.new(poster), status: :created
-        end
     end
 
     def show
@@ -62,6 +81,7 @@ class Api::V1::PostersController < ApplicationController
             end
         end
     end
+
     def delete
         poster = Poster.find(params[:id])
         poster.destroy
