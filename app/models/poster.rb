@@ -1,4 +1,11 @@
 class Poster < ApplicationRecord
+    validates :name, :presence => true, :uniqueness => true
+    validates :description, :presence => true
+    validates :year, :presence => true, :numericality => { :only_integer => true}
+    validates :price, :presence => true, :numericality => true
+    validates :vintage, :inclusion => {:in => [true,false]}
+
+
     def self.search_by_name(input)
         where("name ILIKE ?", "%#{input}%").order("name")
     end
