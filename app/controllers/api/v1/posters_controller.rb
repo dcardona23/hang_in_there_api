@@ -13,20 +13,55 @@ class Api::V1::PostersController < ApplicationController
     end
 
     def create
-        poster = Poster.create!(poster_params)
-        render json: PosterSerializer.new(poster)
+        if Poster.exists?(name: poster_params[:name])
+            render json: {
+                "errors": [
+                    {
+                        status: "422",
+                        message: "Duplicate name entered."
+                    }
+                ]
+            }, status: :unprocessable_entity
+        else
+            poster = Poster.create!(poster_params)
+            render json: PosterSerializer.new(poster), status: :created
+        end
     end
 
     def show
-        poster = Poster.find(params[:id])
-        render json: PosterSerializer.new(poster)
+        begin
+            poster = Poster.find(params[:id])
+            render json: PosterSerializer.new(poster)
+        rescue ActiveRecord::RecordNotFound
+            render json: { 
+                errors: [
+                    {
+                        status: "404",
+                        message: "Record not found"
+                    }
+                ]
+            }, status: :not_found
+        end
     end
 
     def update 
-        poster = Poster.update!(params[:id], poster_params)
-        render json: PosterSerializer.new(poster)
-    end
+        poster = Poster.find(params[:id])
 
+        if Poster.exists?(name: poster_params[:name]) && poster.name != poster_params[:name]
+            render json: {
+                "errors": [
+                    {
+                        status: "422",
+                        message: "Duplicate name entered."
+                    }
+                ]
+            }, status: :unprocessable_entity
+        else    
+            if poster.update!(poster_params)
+            render json: PosterSerializer.new(poster), status: :ok
+            end
+        end
+    end
     def delete
         poster = Poster.find(params[:id])
         poster.destroy
