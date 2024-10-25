@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-10-25T12:35:21-06:00">2024-10-25T12:35:21-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-10-25T15:48:37-06:00">2024-10-25T15:48:37-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -22,14 +22,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  98.84%
+  99.71%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.61
+         1.62
        </span>
     </span> hits/line
     )
@@ -42,11 +42,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>345</b> relevant lines,
-    <span class="green"><b>341</b> lines covered</span> and
-    <span class="red"><b>4</b> lines missed. </span>
+    <b>341</b> relevant lines,
+    <span class="green"><b>340</b> lines covered</span> and
+    <span class="red"><b>1</b> lines missed. </span>
     (<span class="green">
-  98.84%
+  99.71%
 </span>
 )
   </div>
@@ -71,12 +71,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#04e15c790104524ba6a3e14558edc06a7e42a55b" class="src_link" title="app/controllers/api/v1/posters_controller.rb">app/controllers/api/v1/posters_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">93.33 %</td>
-            <td class="cell--number">103</td>
-            <td class="cell--number">45</td>
-            <td class="cell--number">42</td>
-            <td class="cell--number">3</td>
-            <td class="cell--number">2.80</td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">97</td>
+            <td class="cell--number">41</td>
+            <td class="cell--number">41</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">3.05</td>
             
           </tr>
         
@@ -267,7 +267,7 @@
     <h3>app/controllers/api/v1/posters_controller.rb</h3>
     <h4>
       <span class="green">
-  93.33%
+  100.0%
 </span>
 
       lines covered
@@ -276,9 +276,9 @@
     
 
     <div class="t-line-summary">
-      <b>45</b> relevant lines.
-      <span class="green"><b>42</b> lines covered</span> and
-      <span class="red"><b>3</b> lines missed.</span>
+      <b>41</b> relevant lines.
+      <span class="green"><b>41</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
 
     
@@ -1272,37 +1272,41 @@
 
             
 
-            <code class="ruby">    def search_by_name</code>
+            <code class="ruby">    private</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="92">
+          <li class="never" data-hits="" data-linenumber="92">
             
 
             
 
-            <code class="ruby">        name = params[:name]</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="93">
+          <li class="covered" data-hits="1" data-linenumber="93">
+            
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        posters = Poster.search_by_name(name)</code>
+            <code class="ruby">    def poster_params</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="94">
+          <li class="covered" data-hits="25" data-linenumber="94">
+            
+              <span class="hits">25</span>
             
 
             
 
-            <code class="ruby">        render json: PosterSerializer.format_posters(posters)</code>
+            <code class="ruby">        params.require(:poster).permit(:name, :description, :price, :year, :vintage, :img_url)</code>
           </li>
         </div>
       
@@ -1327,73 +1331,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="97">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    private</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="98">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="99">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def poster_params</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="25" data-linenumber="100">
-            
-              <span class="hits">25</span>
-            
-
-            
-
-            <code class="ruby">        params.require(:poster).permit(:name, :description, :price, :year, :vintage, :img_url)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="101">
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="102">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="103">
+          <li class="never" data-hits="" data-linenumber="97">
             
 
             
