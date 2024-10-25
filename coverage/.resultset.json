@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/devlin/Desktop/turing_work/2mod/hang_in_there_api/spec/models/poster_spec.rb": {
+      "/Users/daniellecardona/turing_work/2mod/projects/hang_in_there_api/spec/models/poster_spec.rb": {
         "lines": [
           1,
           null,
@@ -41,10 +41,11 @@
           1,
           1,
           1,
-          1,
           null,
           null,
           1,
+          1,
+          null,
           1,
           null,
           null,
@@ -86,7 +87,7 @@
           null
         ]
       },
-      "/Users/devlin/Desktop/turing_work/2mod/hang_in_there_api/spec/rails_helper.rb": {
+      "/Users/daniellecardona/turing_work/2mod/projects/hang_in_there_api/spec/rails_helper.rb": {
         "lines": [
           null,
           1,
@@ -100,7 +101,7 @@
           1,
           1,
           1,
-          20,
+          25,
           null,
           null,
           null,
@@ -170,7 +171,7 @@
           null
         ]
       },
-      "/Users/devlin/Desktop/turing_work/2mod/hang_in_there_api/config/environment.rb": {
+      "/Users/daniellecardona/turing_work/2mod/projects/hang_in_there_api/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -179,7 +180,7 @@
           1
         ]
       },
-      "/Users/devlin/Desktop/turing_work/2mod/hang_in_there_api/config/application.rb": {
+      "/Users/daniellecardona/turing_work/2mod/projects/hang_in_there_api/config/application.rb": {
         "lines": [
           1,
           null,
@@ -227,7 +228,7 @@
           null
         ]
       },
-      "/Users/devlin/Desktop/turing_work/2mod/hang_in_there_api/config/boot.rb": {
+      "/Users/daniellecardona/turing_work/2mod/projects/hang_in_there_api/config/boot.rb": {
         "lines": [
           1,
           null,
@@ -235,7 +236,7 @@
           1
         ]
       },
-      "/Users/devlin/Desktop/turing_work/2mod/hang_in_there_api/config/environments/test.rb": {
+      "/Users/daniellecardona/turing_work/2mod/projects/hang_in_there_api/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -303,7 +304,7 @@
           null
         ]
       },
-      "/Users/devlin/Desktop/turing_work/2mod/hang_in_there_api/config/initializers/cors.rb": {
+      "/Users/daniellecardona/turing_work/2mod/projects/hang_in_there_api/config/initializers/cors.rb": {
         "lines": [
           null,
           null,
@@ -323,7 +324,7 @@
           null
         ]
       },
-      "/Users/devlin/Desktop/turing_work/2mod/hang_in_there_api/config/initializers/filter_parameter_logging.rb": {
+      "/Users/daniellecardona/turing_work/2mod/projects/hang_in_there_api/config/initializers/filter_parameter_logging.rb": {
         "lines": [
           null,
           null,
@@ -335,41 +336,8 @@
           null
         ]
       },
-      "/Users/devlin/Desktop/turing_work/2mod/hang_in_there_api/config/initializers/inflections.rb": {
+      "/Users/daniellecardona/turing_work/2mod/projects/hang_in_there_api/config/initializers/inflections.rb": {
         "lines": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/devlin/Desktop/turing_work/2mod/hang_in_there_api/config/routes.rb": {
-        "lines": [
-          1,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
           null,
           null,
           null,
@@ -388,7 +356,40 @@
           null
         ]
       },
-      "/Users/devlin/Desktop/turing_work/2mod/hang_in_there_api/app/models/poster.rb": {
+      "/Users/daniellecardona/turing_work/2mod/projects/hang_in_there_api/config/routes.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/daniellecardona/turing_work/2mod/projects/hang_in_there_api/app/models/poster.rb": {
         "lines": [
           1,
           1,
@@ -399,7 +400,7 @@
           null,
           null,
           1,
-          2,
+          3,
           null,
           null,
           1,
@@ -426,14 +427,14 @@
           null
         ]
       },
-      "/Users/devlin/Desktop/turing_work/2mod/hang_in_there_api/app/models/application_record.rb": {
+      "/Users/daniellecardona/turing_work/2mod/projects/hang_in_there_api/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/devlin/Desktop/turing_work/2mod/hang_in_there_api/spec/requests/api/v1/posters_request_spec.rb": {
+      "/Users/daniellecardona/turing_work/2mod/projects/hang_in_there_api/spec/requests/api/v1/posters_request_spec.rb": {
         "lines": [
           1,
           null,
@@ -514,7 +515,81 @@
           null,
           null,
           1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
           1,
           null,
           null,
@@ -558,10 +633,16 @@
           1,
           null,
           1,
+          1,
+          null,
+          1,
+          null,
           1,
           null,
           1,
+          1,
           null,
+          1,
           1,
           null,
           1,
@@ -570,13 +651,25 @@
           1,
           1,
           null,
+          null,
+          1,
           1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           1,
           null,
           1,
+          null,
           1,
           null,
           null,
+          null,
+          null,
           1,
           1,
           null,
@@ -693,18 +786,52 @@
           null,
           null,
           1,
+          null,
+          null,
           null,
           null,
           null,
           null,
           null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
           null,
           1,
           1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
           null,
+          null,
+          null,
+          null,
+          null,
           1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           1,
           1,
           1,
@@ -809,7 +936,7 @@
           null
         ]
       },
-      "/Users/devlin/Desktop/turing_work/2mod/hang_in_there_api/app/controllers/api/v1/posters_controller.rb": {
+      "/Users/daniellecardona/turing_work/2mod/projects/hang_in_there_api/app/controllers/api/v1/posters_controller.rb": {
         "lines": [
           1,
           1,
@@ -823,32 +950,64 @@
           6,
           null,
           6,
+          null,
+          null,
+          1,
+          4,
+          4,
+          4,
+          4,
+          4,
+          null,
+          4,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          3,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          2,
+          2,
+          null,
+          null,
+          1,
+          null,
+          2,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null,
           null,
           1,
           2,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
           null,
           2,
-          2,
-          null,
-          null,
-          null,
           1,
-          null,
-          1,
-          1,
-          0,
-          0,
-          null,
-          null,
           null,
           null,
           null,
@@ -860,18 +1019,6 @@
           1,
           1,
           null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
           null,
           null,
           null,
@@ -890,19 +1037,19 @@
           1,
           null,
           1,
-          6,
+          25,
           null,
           null,
           null
         ]
       },
-      "/Users/devlin/Desktop/turing_work/2mod/hang_in_there_api/app/controllers/application_controller.rb": {
+      "/Users/daniellecardona/turing_work/2mod/projects/hang_in_there_api/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/devlin/Desktop/turing_work/2mod/hang_in_there_api/app/serializers/poster_serializer.rb": {
+      "/Users/daniellecardona/turing_work/2mod/projects/hang_in_there_api/app/serializers/poster_serializer.rb": {
         "lines": [
           1,
           1,
@@ -912,6 +1059,6 @@
         ]
       }
     },
-    "timestamp": 1729863972
+    "timestamp": 1729881321
   }
 }
